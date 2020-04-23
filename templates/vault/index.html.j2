@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %} Budget Overview{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="topnav">
+    <a class="active" href="{{url_for('vault.create')}}"> Create a new Expense </a>
+    <a href="{{url_for('vault.parlor')}}"> Parlor Fund </a>
+</div>
+<div class="body">
+  <ul class="expenses">
+    {%for item in budgets %}
+      <li>
+        <div class="entry">
+          <p>
+            Expense name: {{item.title}},
+            Cost: {{item.cost}}
+          </p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

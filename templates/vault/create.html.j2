@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Input New Expense{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Expense Title: </label>
+    <input name="title" id="title" value="{{ request.form['title'] }}" required>
+    <label for="cost">Cost:
+    <input name="cost" id="cost" value="{{ request.form['cost'] }}" required></label>
+    <div class="form-check form-check-inline">
+    <label> Requesting Reimbursement?
+      <label for="yes" class="form-check-label">Yes
+      <input type="radio" id="yes" name="reimbursement" class="form-check-input" value=Yes></label>
+      <label for="no" class="form-check-label">No
+        <input type="radio" id="no" name="reimbursement" class="form-check-input"
+      </label>
+    </label>
+    </div>
+    <h2> Select the category for the following expense: </h2>
+    <br>
+    <div class="form-check form-check-inline">
+    {% for item in budgets %}
+        <label for="{{item}}" class="form-check-label">
+        <input type="radio" id="{{item}}" name="category" value="{{item}}" class="form-check-input">
+         {{item}} </label>
+    {% endfor %}
+    </div>
+    <br>
+    <label for="body">Add expense description: </label>
+    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

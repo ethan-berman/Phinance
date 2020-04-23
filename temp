@@ -1,0 +1,7 @@
+<div class="form-check form-check-inline">
+    {% for item in budgets %}
+        <label for="{{item}}" class="form-check-label">
+        <input type="radio" id="category" name="category" value="{{item}}" class="form-check-input">
+         {{item}} </label>
+    {% endfor %}
+    </div>
